@@ -5,7 +5,7 @@ const jwtRefreshTokenExpirationMS = 2592000; // 30 дней
 
 /**
  * Информация о пользователе, которая хранится в JWT токене
- * @typedef {Object} Data
+ * @typedef {Object} UserData
  * @property {number} id ID пользователя
  */
 /** Объект к Access и Refresh токенами
@@ -14,7 +14,7 @@ const jwtRefreshTokenExpirationMS = 2592000; // 30 дней
  * @property {jwt.Jwt} refresh_token Токен для обновление access_token
  */
 /** Генератор JWT токенов
- * @param {Data} userData Любые пользовательские данные в токене
+ * @param {UserData} userData Любые пользовательские данные в токене
  * @returns {JWTtokens} Токены пользователя
  */
 export function generateTokens(userData) {
