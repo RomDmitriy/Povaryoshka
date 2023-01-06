@@ -1,4 +1,4 @@
-import * as jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
 const jwtAccessTokenExpirationMS = 900; // 15 минут
 const jwtRefreshTokenExpirationMS = 2592000; // 30 дней
