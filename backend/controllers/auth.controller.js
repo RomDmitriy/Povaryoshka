@@ -1,9 +1,22 @@
-import { validationResult } from "express-validator";
+import UserModel from "../models/User.model.js";
 import { generateTokens } from "../utilities/jwt.js";
+
+import * as bcrypt from 'bcrypt';
 
 export class AuthController {
     async registerUser(req, res) {
-        const tokens = generateTokens({id: 1});
+
+        const salt = await bcrypt.genSalt(10);
+        const passwordHash = await bcrypt.hash(req.body.password, salt);
+
+        const doc = new UserModel({
+            email: req.body.email,
+            password: passwordHash,
+            fullName: req.body.fullName,
+            avatarUrl: req.body.avatarUrl
+        });
+
+        const tokens = generateTokens({id: doc._id});
         res.json(tokens);
     }
 
