@@ -1,5 +1,14 @@
 import express from 'express';
+import * as dotenv from 'dotenv';
 import authRouter from './routes/auth.route.js';
+
+if (process.env.NODE_ENV === undefined) {
+    console.log('NODE_ENV not specified. Set Production Mode.');
+    process.env.NODE_ENV = 'production';
+}
+
+console.log(`Starting API in ${process.env.NODE_ENV} ENV...`);
+dotenv.config({path: '../.env.development'});
 
 // будет перенесено в .env
 const PORT = 5000;
@@ -16,5 +25,5 @@ app.listen(PORT, (err) => {
         return console.log(err);
     }
     
-    console.log(`Auth server started on port ${PORT}`);
+    console.log(`API started on port ${PORT}`);
 });
