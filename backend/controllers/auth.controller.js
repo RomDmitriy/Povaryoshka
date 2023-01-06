@@ -1,3 +1,4 @@
+import { validationResult } from "express-validator";
 import { generateTokens } from "../utilities/jwt.js";
 
 export class AuthController {

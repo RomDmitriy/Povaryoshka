@@ -1,13 +1,14 @@
 import { Router } from 'express';
 import { AuthController } from '../controllers/auth.controller.js';
-import { loginValidation, registerValidation } from '../validations/auth.validator.js';
+import validate from '../utilities/validate.js';
+import { loginValidators, registerValidators } from '../validations/auth.validator.js';
 
 const authRouter = Router();
 const authController = new AuthController();
 
-//TODO: валидация почему-то пропускается
-authRouter.post('/register', registerValidation, authController.registerUser);
 
-authRouter.post('/login', loginValidation, authController.loginUser);
+authRouter.post('/register', registerValidators, validate, authController.registerUser);
+
+authRouter.post('/login', loginValidators, validate, authController.loginUser);
 
 export default authRouter;
