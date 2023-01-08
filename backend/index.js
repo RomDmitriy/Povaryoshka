@@ -12,7 +12,6 @@ import authRouter from './routes/auth.route.js';
 
 /// Выбор конфигурации
 if (process.env.NODE_ENV === undefined) {
-    console.log('NODE_ENV not specified. Set Development Mode.');
     process.env.NODE_ENV = 'development';
 }
 console.log(`Starting API in ${process.env.NODE_ENV} ENV...`);
