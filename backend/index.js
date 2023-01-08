@@ -3,6 +3,7 @@ import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
 import * as dotenv from 'dotenv';
+import morgan from 'morgan';
 import * as mongodb from './utilities/mongodb.js';
 
 /// Роуты
@@ -16,9 +17,11 @@ if (process.env.NODE_ENV === undefined) {
 console.log(`Starting API in ${process.env.NODE_ENV} ENV...`);
 dotenv.config({path: `../.env.${process.env.NODE_ENV}`});
 
-await mongodb.init();
+await mongodb.init(); // инициализация БД
 
 const app = express(); // инициализация API
+
+app.use(morgan('common')); // логгер
 
 app.use(express.json()); // для работы с json body
 
