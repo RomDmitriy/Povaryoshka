@@ -1,9 +1,10 @@
-import { MongoClient, ServerApiVersion } from "mongodb";
-const client = new MongoClient(process.env.MONGODB_LINK, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverApi: ServerApiVersion.v1,
-});
-client.connect();
+import * as mongoose from "mongoose";
 
-export default client;
+export async function init() {
+    if (process.env.MONGODB_LINK === undefined) throw Error('MONGODB_LINK ENV doens\'t set');
+
+    // Подготовка к Mongoose 7
+    mongoose.set('strictQuery', false);
+
+    await mongoose.connect(process.env.MONGODB_LINK);
+}

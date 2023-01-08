@@ -16,6 +16,8 @@ export class AuthController {
             avatarUrl: req.body.avatarUrl
         });
 
+        const user = await doc.save();
+
         const tokens = generateTokens({id: doc._id});
         res.json(tokens);
     }
