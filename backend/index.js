@@ -4,6 +4,7 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
 import * as dotenv from 'dotenv';
 import morgan from 'morgan';
+import helmet from 'helmet';
 import * as mongodb from './utilities/mongodb.js';
 
 /// Роуты
@@ -22,6 +23,8 @@ await mongodb.init(); // инициализация БД
 const app = express(); // инициализация API
 
 app.use(morgan('common')); // логгер
+
+app.use(helmet()); // различные защиты через HTTP заголовки
 
 app.use(express.json()); // для работы с json body
 
