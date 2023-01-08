@@ -7,4 +7,6 @@ export async function init() {
     mongoose.set('strictQuery', false);
 
     await mongoose.connect(process.env.MONGODB_LINK);
+
+    console.log('Database connected.');
 }

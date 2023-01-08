@@ -54,7 +54,7 @@ const authController = new AuthController();
  *           application/json:
  *             schema: {$ref: '#components/schemas/Tokens'}
  *       400:
- *         description: Валидация входных данных не пройдена
+ *         description: Валидация входных данных не пройдена.
  */
 authRouter.post('/register', registerValidators, validate, authController.registerUser);
 
