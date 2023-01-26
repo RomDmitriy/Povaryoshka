@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === undefined) {
     process.env.NODE_ENV = 'development';
 }
 console.log(`Starting API in ${process.env.NODE_ENV} ENV...`);
-dotenv.config({path: `../.env.${process.env.NODE_ENV}`});
+dotenv.config({path: `../.env.${process.env.NODE_ENV}.local`});
 
 await mongodb.init(); // инициализация БД
 
